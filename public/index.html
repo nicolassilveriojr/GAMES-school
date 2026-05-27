@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexPlay</title>
+  <meta name="description" content="Hub de jogos desbloqueados" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- TAB CLOAK OVERLAY -->
+<div id="panicOverlay" style="display:none">
+  <div id="panicContent"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-brand">
+    <span class="brand-icon">⬡</span>
+    <span class="brand-text">Nex<span>Play</span></span>
+  </div>
+  <div class="nav-search">
+    <div class="search-box">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Buscar jogo ou categoria..." spellcheck="false" />
+      <kbd id="searchKbd">Ctrl K</kbd>
+    </div>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-btn" id="randomBtn" title="Jogo aleatório">🎲</button>
+    <button class="nav-btn" id="favBtn" title="Favoritos">⭐</button>
+    <button class="nav-btn" id="cloakBtn" title="Tab cloak">🔒</button>
+    <button class="nav-btn" id="settingsBtn" title="Configurações">⚙️</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">Jogue <span>qualquer coisa</span>.<br />Em qualquer lugar.</h1>
+    <p class="hero-sub">+ de 80 jogos. Proxy embutido. Sem bloqueio.</p>
+    <div class="hero-stats" id="heroStats">
+      <div class="stat"><span id="statGames">0</span><small>jogos</small></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span id="statCats">0</span><small>categorias</small></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span>100%</span><small>grátis</small></div>
+    </div>
+  </div>
+  <div class="hero-bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+</div>
+
+<!-- CATS BAR -->
+<div class="cats-wrap">
+  <div class="cats-bar" id="catsBar"></div>
+</div>
+
+<!-- MAIN -->
+<main class="main-wrap">
+  <div class="section-header" id="sectionHeader">
+    <span id="sectionLabel">Todos os jogos</span>
+    <div class="view-btns">
+      <button class="view-btn active" id="viewGrid" title="Grade">⊞</button>
+      <button class="view-btn" id="viewList" title="Lista">☰</button>
+    </div>
+  </div>
+  <div class="games-grid" id="gamesGrid"></div>
+</main>
+
+<!-- GAME MODAL -->
+<div class="modal-bg" id="modal">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-topbar">
+      <div class="modal-game-info">
+        <span id="mEmoji" class="m-emoji"></span>
+        <div>
+          <span id="mTitle" class="m-title"></span>
+          <span id="mCat" class="m-cat"></span>
+        </div>
+      </div>
+      <div class="modal-controls">
+        <button class="mctl-btn" id="mFav" title="Favoritar">⭐</button>
+        <button class="mctl-btn" id="mProxy" title="Abrir no proxy UV">🔓 Proxy</button>
+        <button class="mctl-btn" id="mExternal" title="Nova aba">↗</button>
+        <button class="mctl-btn mctl-full" id="mFull" title="Tela cheia">⛶</button>
+        <button class="mctl-btn mctl-close" id="mClose">✕</button>
+      </div>
+    </div>
+    <div class="modal-frame-area" id="frameArea">
+      <div class="frame-loader" id="frameLoader">
+        <div class="frame-loader-ring"></div>
+        <p>Carregando...</p>
+        <small id="loaderUrl"></small>
+      </div>
+      <iframe id="gameFrame"
+        src=""
+        allowfullscreen
+        allow="fullscreen; pointer-lock; autoplay"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock allow-modals allow-orientation-lock allow-presentation"
+      ></iframe>
+    </div>
+    <div class="modal-footer">
+      <span id="mTags" class="m-tags"></span>
+      <span class="m-hint">Pressione <kbd>Esc</kbd> para fechar</span>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS PANEL -->
+<div class="panel-bg" id="settingsPanel">
+  <div class="panel-box">
+    <div class="panel-header">
+      <span>⚙️ Configurações</span>
+      <button onclick="closePanel('settingsPanel')">✕</button>
+    </div>
+    <div class="panel-body">
+      <div class="setting-row">
+        <div>
+          <strong>Tab Cloak</strong>
+          <p>Disfarça a aba do navegador</p>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="cloakToggle" onchange="toggleCloak(this.checked)" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-row" id="cloakOptions" style="display:none">
+        <div><strong>Página de disfarce</strong></div>
+        <select id="cloakSite" onchange="setCloakSite(this.value)">
+          <option value="classroom">Google Classroom</option>
+          <option value="docs">Google Docs</option>
+          <option value="drive">Google Drive</option>
+          <option value="khan">Khan Academy</option>
+          <option value="duolingo">Duolingo</option>
+        </select>
+      </div>
+      <div class="setting-row">
+        <div>
+          <strong>Usar Proxy UV</strong>
+          <p>Para jogos bloqueados (Service Worker)</p>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="proxyToggle" onchange="toggleProxy(this.checked)" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-row">
+        <div>
+          <strong>Animações</strong>
+          <p>Desativa animações para mais performance</p>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="animToggle" checked onchange="toggleAnim(this.checked)" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAVS PANEL -->
+<div class="panel-bg" id="favsPanel">
+  <div class="panel-box">
+    <div class="panel-header">
+      <span>⭐ Favoritos</span>
+      <button onclick="closePanel('favsPanel')">✕</button>
+    </div>
+    <div class="panel-body" id="favsList"></div>
+  </div>
+</div>
+
+<!-- UV registration -->
+<script src="/uv/uv.bundle.js"></script>
+<script src="/uv/uv.config.js"></script>
+<script src="/js/registerSW.js"></script>
+<script src="/js/app.js"></script>
+
+</body>
+</html>

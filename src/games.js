@@ -1,0 +1,111 @@
+const games = [
+  // ─── IO ───
+  { id: "agario",      name: "Agar.io",           url: "https://agar.io",                                          img: null, emoji: "🔵", cat: "IO",        tags: ["multiplayer","cells"] },
+  { id: "slither",     name: "Slither.io",         url: "https://slither.io",                                       img: null, emoji: "🐍", cat: "IO",        tags: ["snake","multiplayer"] },
+  { id: "diep",        name: "Diep.io",            url: "https://diep.io",                                          img: null, emoji: "🔫", cat: "IO",        tags: ["tanks","shooter"] },
+  { id: "krunker",     name: "Krunker.io",         url: "https://krunker.io",                                       img: null, emoji: "🎯", cat: "IO",        tags: ["fps","multiplayer"] },
+  { id: "smashkarts",  name: "Smash Karts",        url: "https://smashkarts.io",                                    img: null, emoji: "🏎️", cat: "IO",        tags: ["karts","multiplayer"], novo: true },
+  { id: "arrasio",     name: "Arras.io",           url: "https://arras.io",                                         img: null, emoji: "🎮", cat: "IO",        tags: ["tanks","shooter"] },
+  { id: "digdig",      name: "digdig.io",          url: "https://digdig.io",                                        img: null, emoji: "⛏️", cat: "IO",        tags: ["mining"] },
+  { id: "deeeep",      name: "Deeeep.io",          url: "https://deeeep.io",                                        img: null, emoji: "🦈", cat: "IO",        tags: ["ocean"] },
+  { id: "bloxd",       name: "Bloxd.io",           url: "https://bloxd.io",                                         img: null, emoji: "🧱", cat: "IO",        tags: ["minecraft","multiplayer"], novo: true },
+  { id: "dynast",      name: "Dynast.io",          url: "https://dynast.io",                                        img: null, emoji: "👑", cat: "IO",        tags: ["survival"] },
+  { id: "antwar",      name: "AntWar.io",          url: "https://antwar.io",                                        img: null, emoji: "🐜", cat: "IO",        tags: ["ants"] },
+  { id: "1v1lol",      name: "1v1.LOL",            url: "https://1v1.lol",                                          img: null, emoji: "🏗️", cat: "IO",        tags: ["build","shooter"] },
+  { id: "deadshot",    name: "Deadshot.io",        url: "https://deadshot.io",                                      img: null, emoji: "💀", cat: "IO",        tags: ["fps","shooter"], novo: true },
+
+  // ─── AÇÃO ───
+  { id: "bulletforce",  name: "Bullet Force",       url: "https://www.bulletforcegame.com",                         img: null, emoji: "💥", cat: "Ação",      tags: ["fps"] },
+  { id: "clusterrush",  name: "Cluster Rush",       url: "https://clusterrush.io",                                  img: null, emoji: "🚛", cat: "Ação",      tags: ["trucks","action"] },
+  { id: "cryzen",       name: "Cryzen.io",          url: "https://cryzen.io",                                       img: null, emoji: "❄️", cat: "Ação",      tags: ["fps"] },
+  { id: "buildnow",     name: "BuildNow.GG",        url: "https://buildnow.gg",                                     img: null, emoji: "🔨", cat: "Ação",      tags: ["build","shoot"], novo: true },
+  { id: "shellshock",   name: "Shell Shockers",     url: "https://shellshock.io",                                   img: null, emoji: "🥚", cat: "Ação",      tags: ["fps","eggs"], novo: true },
+  { id: "cubefield",    name: "Cubefield",          url: "https://www.cubefield.org.uk",                            img: null, emoji: "🟦", cat: "Ação",      tags: ["dodge","speed"] },
+  { id: "warbrokers",   name: "War Brokers",        url: "https://warbrokers.io",                                   img: null, emoji: "🪖", cat: "Ação",      tags: ["fps","war"] },
+
+  // ─── ARCADE ───
+  { id: "dino",        name: "Dino Game",          url: "https://chromedino.com",                                   img: null, emoji: "🦕", cat: "Arcade",    tags: ["chrome","endless"] },
+  { id: "slope",       name: "Slope",              url: "https://slope-game.com",                                   img: null, emoji: "⚡", cat: "Arcade",    tags: ["ball","speed"] },
+  { id: "run3",        name: "Run 3",              url: "https://run3.io",                                          img: null, emoji: "🏃", cat: "Arcade",    tags: ["endless","space"] },
+  { id: "doodlejump",  name: "Doodle Jump",        url: "https://doodlejump.io",                                    img: null, emoji: "🦘", cat: "Arcade",    tags: ["jump"] },
+  { id: "crossyroad",  name: "Crossy Road",        url: "https://www.crossyroad.com",                               img: null, emoji: "🐔", cat: "Arcade",    tags: ["endless","chicken"] },
+  { id: "catninja",    name: "Cat Ninja",          url: "https://catninja.io",                                      img: null, emoji: "🐱", cat: "Arcade",    tags: ["ninja","platformer"] },
+  { id: "candyjump",   name: "Candy Jump",         url: "https://candy-jump.io",                                    img: null, emoji: "🍭", cat: "Arcade",    tags: ["jump"] },
+  { id: "drivemad",    name: "Drive Mad",          url: "https://drivemad.io",                                      img: null, emoji: "🚗", cat: "Arcade",    tags: ["cars","physics"] },
+  { id: "cubes2048",   name: "Cubes 2048",         url: "https://cubes2048.io",                                     img: null, emoji: "🟩", cat: "Arcade",    tags: ["3d","2048"] },
+  { id: "basketrandom",name: "Basket Random",      url: "https://basketrandom.io",                                  img: null, emoji: "🏀", cat: "Arcade",    tags: ["basketball","funny"] },
+  { id: "basketbros",  name: "Basketball Bros",    url: "https://basketballbros.io",                                img: null, emoji: "🏀", cat: "Arcade",    tags: ["basketball"] },
+  { id: "bigtower",    name: "Big Tower Tiny Sq.", url: "https://bigtowertinysquare.io",                            img: null, emoji: "🟥", cat: "Arcade",    tags: ["platformer"] },
+  { id: "flappybird",  name: "Flappy Bird",        url: "https://flappybird.io",                                    img: null, emoji: "🐤", cat: "Arcade",    tags: ["bird","tap"] },
+  { id: "geometrydash",name: "Geometry Dash",      url: "https://geometrydash.io",                                  img: null, emoji: "🔺", cat: "Arcade",    tags: ["rhythm","platformer"], novo: true },
+  { id: "badicecream", name: "Bad Ice Cream",      url: "https://www.badicecream.com/bad-ice-cream",                img: null, emoji: "🍦", cat: "Arcade",    tags: ["multiplayer","ice"] },
+  { id: "fireboywg",   name: "Fireboy & Watergirl",url: "https://www.fireboywatergirl.com",                         img: null, emoji: "🔥", cat: "Arcade",    tags: ["coop","platformer"] },
+  { id: "awesometanks",name: "Awesome Tanks",      url: "https://www.awesometanks.com",                             img: null, emoji: "🪖", cat: "Arcade",    tags: ["tanks","shooter"] },
+  { id: "3ddinogame",  name: "3D Dino Game",       url: "https://3ddinogame.io",                                    img: null, emoji: "🦖", cat: "Arcade",    tags: ["dino","3d"] },
+
+  // ─── PUZZLE ───
+  { id: "2048",        name: "2048",               url: "https://play2048.co",                                      img: null, emoji: "🔢", cat: "Puzzle",    tags: ["numbers","slide"] },
+  { id: "minesweeper", name: "Minesweeper",        url: "https://minesweeperonline.com",                            img: null, emoji: "💣", cat: "Puzzle",    tags: ["classic"] },
+  { id: "connections", name: "Connections",        url: "https://connections.swellgarfo.com",                       img: null, emoji: "🔗", cat: "Puzzle",    tags: ["nyt","words"] },
+  { id: "sudoku",      name: "Sudoku",             url: "https://sudoku.com",                                       img: null, emoji: "🔲", cat: "Puzzle",    tags: ["numbers","logic"] },
+  { id: "braintest",   name: "Brain Test",         url: "https://braintest.io",                                     img: null, emoji: "🧠", cat: "Puzzle",    tags: ["tricky"] },
+  { id: "braintest2",  name: "Brain Test 2",       url: "https://braintest2.io",                                    img: null, emoji: "🧠", cat: "Puzzle",    tags: ["tricky"] },
+  { id: "braintest3",  name: "Brain Test 3",       url: "https://braintest3.io",                                    img: null, emoji: "🧠", cat: "Puzzle",    tags: ["tricky"] },
+  { id: "3slices",     name: "3 Slices",           url: "https://3slices.io",                                       img: null, emoji: "🍕", cat: "Puzzle",    tags: ["physics"] },
+  { id: "wordle",      name: "Wordle",             url: "https://wordleunlimited.com",                               img: null, emoji: "📝", cat: "Puzzle",    tags: ["words"] },
+  { id: "cuttherope",  name: "Cut the Rope",       url: "https://www.cuttherope.net",                               img: null, emoji: "🪢", cat: "Puzzle",    tags: ["physics","candy"] },
+  { id: "colorswitch", name: "Color Switch",       url: "https://colorswitch.io",                                   img: null, emoji: "🎨", cat: "Puzzle",    tags: ["color","reflex"] },
+  { id: "bubbleshoter",name: "Bubble Shooter",     url: "https://www.bubbleshooter.net",                            img: null, emoji: "🫧", cat: "Puzzle",    tags: ["bubbles","match"] },
+
+  // ─── IDLE / CLICKER ───
+  { id: "cookieclicker",name:"Cookie Clicker",     url: "https://orteil.dashnet.org/cookieclicker/",                img: null, emoji: "🍪", cat: "Idle",      tags: ["clicker","classic"] },
+  { id: "clickerheroes",name:"Clicker Heroes",     url: "https://www.clickerheroes.com",                            img: null, emoji: "⚔️", cat: "Idle",      tags: ["rpg","clicker"] },
+  { id: "adarkroom",   name: "A Dark Room",        url: "https://adarkroom.doublespeakgames.com",                   img: null, emoji: "🕯️", cat: "Idle",      tags: ["text","mystery"] },
+  { id: "candybox",    name: "Candy Box 2",        url: "https://candybox2.github.io/candybox/",                    img: null, emoji: "🍬", cat: "Idle",      tags: ["text","rpg"] },
+  { id: "dogeminer",   name: "Doge Miner",         url: "https://dogeminer2.com",                                   img: null, emoji: "🐕", cat: "Idle",      tags: ["doge","clicker"] },
+  { id: "adventurecap",name: "Adventure Capitalist",url:"https://apps.kongregate.com/games/HyperHippoGames/adventure-capitalist", img: null, emoji: "💰", cat: "Idle", tags: ["money","clicker"] },
+  { id: "buckshotroul",name: "Buckshot Roulette",  url: "https://buckshot-roulette.io",                             img: null, emoji: "🎲", cat: "Idle",      tags: ["horror","cards"] },
+  { id: "csgoclicker", name: "CSGO Clicker",       url: "https://csgoclicker.io",                                   img: null, emoji: "💰", cat: "Idle",      tags: ["csgo","clicker"] },
+
+  // ─── ESTRATÉGIA ───
+  { id: "chess",       name: "Chess.com",          url: "https://www.chess.com/play/online",                        img: null, emoji: "♟️", cat: "Estratégia",tags: ["chess","classic"] },
+  { id: "ageofwar",    name: "Age of War",         url: "https://ageofwar.io",                                      img: null, emoji: "⚔️", cat: "Estratégia",tags: ["war","base"] },
+  { id: "btd4",        name: "Bloons TD 4",        url: "https://www.ninjakiwi.com/Games/Tower-Defense-Games/Play/Bloons-Tower-Defense-4.html", img:null, emoji:"🎈", cat:"Estratégia", tags:["tower defense"] },
+  { id: "btd5",        name: "Bloons TD 5",        url: "https://ninjakiwi.com/Games/Tower-Defense-Games/Bloons-Tower-Defense-5.html", img:null, emoji:"🎈", cat:"Estratégia", tags:["tower defense"] },
+  { id: "bloonstdb2",  name: "Bloons TD Battles 2",url: "https://bloonstdbattles2.io",                              img: null, emoji: "🎈", cat: "Estratégia",tags: ["tower defense"], novo: true },
+  { id: "btd6",        name: "Bloons TD 6",        url: "https://btd6.io",                                          img: null, emoji: "🎈", cat: "Estratégia",tags: ["tower defense"], novo: true },
+
+  // ─── PLATAFORMA ───
+  { id: "celeste",     name: "Celeste PICO-8",     url: "https://mattmakesgames.itch.io/celeste-classic",            img: null, emoji: "❄️", cat: "Plataforma",tags: ["indie","hard"] },
+  { id: "doom",        name: "DOOM (1993)",        url: "https://dos.zone/doom-1993/",                               img: null, emoji: "👹", cat: "Plataforma",tags: ["fps","classic"] },
+  { id: "doom2",       name: "Doom 2",             url: "https://dos.zone/doom-ii-hell-on-earth-1994/",              img: null, emoji: "🔥", cat: "Plataforma",tags: ["fps","classic"] },
+  { id: "aceattorney", name: "Ace Attorney",       url: "https://aceattorney.netlify.app",                           img: null, emoji: "⚖️", cat: "Plataforma",tags: ["visual novel"] },
+  { id: "earntodie",   name: "Earn to Die",        url: "https://www.earntodiegame.com/game.html",                   img: null, emoji: "🧟", cat: "Plataforma",tags: ["zombie","cars"] },
+  { id: "ducklife1",   name: "Duck Life 1",        url: "https://ducklife.io/duck-life-1",                           img: null, emoji: "🐤", cat: "Plataforma",tags: ["duck"] },
+  { id: "ducklife2",   name: "Duck Life 2",        url: "https://ducklife.io/duck-life-2",                           img: null, emoji: "🐥", cat: "Plataforma",tags: ["duck"] },
+  { id: "ducklife3",   name: "Duck Life 3",        url: "https://ducklife.io/duck-life-3",                           img: null, emoji: "🦆", cat: "Plataforma",tags: ["duck"] },
+  { id: "ducklife4",   name: "Duck Life 4",        url: "https://ducklife.io/duck-life-4",                           img: null, emoji: "🦅", cat: "Plataforma",tags: ["duck"], novo: true },
+  { id: "fnaf",        name: "FNAF",               url: "https://fnaf.io",                                           img: null, emoji: "🐻", cat: "Plataforma",tags: ["horror"] },
+  { id: "fnaf2",       name: "FNAF 2",             url: "https://fnaf2.io",                                          img: null, emoji: "🐻", cat: "Plataforma",tags: ["horror"] },
+  { id: "fnaf3",       name: "FNAF 3",             url: "https://fnaf3.io",                                          img: null, emoji: "🐻", cat: "Plataforma",tags: ["horror"] },
+  { id: "fnaf4",       name: "FNAF 4",             url: "https://fnaf4.io",                                          img: null, emoji: "🐻", cat: "Plataforma",tags: ["horror"] },
+  { id: "badtimesim",  name: "Bad Time Simulator", url: "https://jcw87.github.io/c2-sans-fight/",                    img: null, emoji: "😈", cat: "Plataforma",tags: ["undertale","boss"] },
+  { id: "fancypants",  name: "Fancy Pants Adv.",   url: "https://fancypantsadventures.com",                          img: null, emoji: "👖", cat: "Plataforma",tags: ["platformer"] },
+  { id: "dadish",      name: "Dadish",             url: "https://dadish.io",                                         img: null, emoji: "🌿", cat: "Plataforma",tags: ["platformer","cute"] },
+
+  // ─── CORRIDA ───
+  { id: "drifthunters",name: "Drift Hunters",      url: "https://drifthunters.io",                                   img: null, emoji: "🚙", cat: "Corrida",   tags: ["drift","cars"] },
+  { id: "driftboss",   name: "Drift Boss",         url: "https://driftboss.io",                                      img: null, emoji: "🏎️", cat: "Corrida",   tags: ["drift"] },
+  { id: "smashingrace",name: "Smashing Race",      url: "https://smashingrace.io",                                   img: null, emoji: "💨", cat: "Corrida",   tags: ["race","cars"] },
+  { id: "highwayracing",name:"Highway Racing",     url: "https://highwayracing.io",                                  img: null, emoji: "🛣️", cat: "Corrida",   tags: ["highway","speed"] },
+
+  // ─── ESPECIAL ───
+  { id: "akinator",    name: "Akinator",           url: "https://en.akinator.com",                                   img: null, emoji: "🧞", cat: "Especial",  tags: ["genie","guess"] },
+  { id: "bitlife",     name: "BitLife",            url: "https://bitlife.io",                                        img: null, emoji: "👤", cat: "Especial",  tags: ["life sim"] },
+  { id: "dealornodeal",name: "Deal or No Deal",    url: "https://dealornodeal.io",                                   img: null, emoji: "💼", cat: "Especial",  tags: ["gameshow"] },
+  { id: "geoguessr",   name: "GeoGuessr",          url: "https://www.geoguessr.com",                                 img: null, emoji: "🌍", cat: "Especial",  tags: ["maps","geography"] },
+  { id: "among",       name: "Among Us (Scratch)", url: "https://scratch.mit.edu/projects/476841348/fullscreen/",    img: null, emoji: "👾", cat: "Especial",  tags: ["social","deduction"] },
+  { id: "escaping",    name: "Escaping Prison",    url: "https://escapingtheprison.net",                             img: null, emoji: "🔒", cat: "Especial",  tags: ["choice","funny"] },
+];
+
+module.exports = games;
