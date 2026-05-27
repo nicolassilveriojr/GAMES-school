@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tomphttp/bare-server-node": "^2.0.6",
     "express": "^5.2.1"
   }
 }
